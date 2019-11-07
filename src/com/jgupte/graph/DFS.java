@@ -1,6 +1,6 @@
-package com.jg.datastructures.graphs;
+package com.jgupte.graph;
 
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+import com.jgupte.graph.v1.Graph;
 
 import java.util.HashSet;
 import java.util.LinkedList;

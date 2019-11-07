@@ -1,4 +1,4 @@
-package com.jg.datastructures;
+package com.jgupte.stackqueue;
 
 public class Queue<T> {
 	private final int INITIAL_SIZE = 3;

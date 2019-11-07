@@ -1,4 +1,4 @@
-package com.jg.algorithms;
+package com.jgupte.programs;
 
 import java.util.ArrayList;
 import java.util.List;

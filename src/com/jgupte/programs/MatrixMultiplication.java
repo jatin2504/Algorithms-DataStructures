@@ -1,4 +1,4 @@
-package com.jg.algorithms;
+package com.jgupte.programs;
 
 public class MatrixMultiplication {
     public static void main(String args[]) {

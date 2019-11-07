@@ -1,4 +1,4 @@
-package com.jg.algorithms;
+package com.jgupte.sorting;
 
 public class QuickSort {
 

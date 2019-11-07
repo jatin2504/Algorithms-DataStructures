@@ -1,4 +1,7 @@
-package com.jg.datastructures.graphs;
+package com.jgupte.graph.v1;
+
+import com.jgupte.graph.BFS;
+import com.jgupte.graph.DFS;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -42,7 +45,7 @@ public class Graph<T> {
         return gMap.keySet();
     }
 
-    LinkedList<T> getAdjacent(T node) {
+    public LinkedList<T> getAdjacent(T node) {
         return gMap.get(node);
     }
 

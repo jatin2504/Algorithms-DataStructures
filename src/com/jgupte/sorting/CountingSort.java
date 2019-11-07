@@ -1,6 +1,4 @@
-package com.jg.algorithms;
-
-import java.lang.reflect.Array;
+package com.jgupte.sorting;
 
 public class CountingSort {
     public static int[] sort(int[] arr, int range) {

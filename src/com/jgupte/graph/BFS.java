@@ -1,4 +1,6 @@
-package com.jg.datastructures.graphs;
+package com.jgupte.graph;
+
+import com.jgupte.graph.v1.Graph;
 
 import java.util.HashSet;
 import java.util.LinkedList;

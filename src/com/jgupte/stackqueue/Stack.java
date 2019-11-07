@@ -1,4 +1,4 @@
-package com.jg.datastructures;
+package com.jgupte.stackqueue;
 
 import java.util.Arrays;
 

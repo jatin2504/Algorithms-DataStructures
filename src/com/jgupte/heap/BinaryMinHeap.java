@@ -18,6 +18,19 @@ public class BinaryMinHeap<T> {
         nodeList.add(dummy);
     }
 
+    public boolean contains(T item) {
+        return position.containsKey(item);
+    }
+
+    public Integer getWeight(T key) {
+        Integer itemPosition = this.position.get(key);
+        if (itemPosition == null) {
+            return null;
+        } else {
+            return nodeList.get(itemPosition).key;
+        }
+    }
+
     public void add(int key, T item) {
         Node node = new Node(key, item);
         position.put(item, nodeList.size());
@@ -26,13 +39,12 @@ public class BinaryMinHeap<T> {
     }
 
 
-
-    public T extractMin() {
-        Node minNode = new Node();
+    public Node<T> extractMin() {
+        Node<T> minNode = new Node();
         minNode.key = nodeList.get(1).key;
-        minNode.item = nodeList.get(1).item;
+        minNode.item = (T) nodeList.get(1).item;
         int lastNodeKey = nodeList.get(nodeList.size() - 1).key;
-        T lastNodeItem = nodeList.get(nodeList.size() - 1).item;
+        T lastNodeItem = (T) nodeList.get(nodeList.size() - 1).item;
 
         nodeList.get(1).item = lastNodeItem;
         nodeList.get(1).key = lastNodeKey;
@@ -40,11 +52,11 @@ public class BinaryMinHeap<T> {
 
         position.remove(minNode.item);
         if (!isEmpty())
-            position.put(nodeList.get(1).item, 1);
+            position.put((T) nodeList.get(1).item, 1);
 
         downHeap(1);
 
-        return minNode.item;
+        return minNode;
     }
 
     public boolean isEmpty() {
@@ -70,7 +82,7 @@ public class BinaryMinHeap<T> {
     private void upHeap(int current) {
         while (current > 1 && (nodeList.get(current / 2).key > nodeList.get(current).key)) {
             swap(nodeList.get(current / 2), nodeList.get(current));
-            updatePosition(nodeList.get(current / 2).item, nodeList.get(current).item, current / 2, current);
+            updatePosition((T) nodeList.get(current / 2).item, (T) nodeList.get(current).item, current / 2, current);
             current = current / 2;
         }
     }
@@ -87,18 +99,18 @@ public class BinaryMinHeap<T> {
                 } else {
                     if (nodeList.get(child1).key < nodeList.get(child2).key) {
                         swap(nodeList.get(parent), nodeList.get(child1));
-                        updatePosition(nodeList.get(parent).item, nodeList.get(child1).item, parent, child1);
+                        updatePosition((T) nodeList.get(parent).item, (T) nodeList.get(child1).item, parent, child1);
                         parent = child1;
                     } else {
                         swap(nodeList.get(parent), nodeList.get(child2));
-                        updatePosition(nodeList.get(parent).item, nodeList.get(child2).item, parent, child2);
+                        updatePosition((T) nodeList.get(parent).item, (T) nodeList.get(child2).item, parent, child2);
                         parent = child2;
                     }
                 }
             } else {
                 if (child1 < nodeList.size() && nodeList.get(child1).key < nodeList.get(parent).key) { //check if node has one child
                     swap(nodeList.get(parent), nodeList.get(child1));
-                    updatePosition(nodeList.get(parent).item, nodeList.get(child1).item, parent, child1);
+                    updatePosition((T) nodeList.get(parent).item, (T) nodeList.get(child1).item, parent, child1);
                     parent = child1;
                 }
                 parent++;
@@ -108,7 +120,7 @@ public class BinaryMinHeap<T> {
 
     private void swap(Node node1, Node node2) {
         int tempKey = node1.key;
-        T tempItem = node1.item;
+        T tempItem = (T) node1.item;
 
         node1.key = node2.key;
         node1.item = node2.item;
@@ -149,17 +161,17 @@ public class BinaryMinHeap<T> {
         heap.printPositionMap();
         System.out.println(heap.extractMin());
         heap.updateKey("Tushar", 12);
-        System.out.println(heap.extractMin());
-        System.out.println(heap.extractMin());
-        System.out.println(heap.extractMin());
-        System.out.println(heap.extractMin());
-        System.out.println(heap.extractMin());
-        System.out.println(heap.extractMin());
+        System.out.println(heap.extractMin().item);
+        System.out.println(heap.extractMin().item);
+        System.out.println(heap.extractMin().item);
+        System.out.println(heap.extractMin().item);
+        System.out.println(heap.extractMin().item);
+        System.out.println(heap.extractMin().item);
     }
 
-    class Node {
-        int key;
-        T item;
+    public class Node<T> {
+        public int key;
+        public T item;
 
         public Node() {
         }

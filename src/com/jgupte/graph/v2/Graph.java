@@ -3,7 +3,9 @@ package com.jgupte.graph.v2;
 import java.util.*;
 
 public class Graph<T> {
-    public HashMap<T, LinkedList<Edge<T>>> graphMap = new HashMap<>();
+    private HashMap<T, LinkedList<Edge<T>>> graphMap = new HashMap<>();
+    private Set<Edge<T>> edgeList = new HashSet<>();
+
     boolean directed = false;
 
     public Graph(boolean directed) {
@@ -37,6 +39,13 @@ public class Graph<T> {
             graphMap.put(vertex2, edgeList);
         }
 
+        if (!edgeList.contains(edge)) {
+            edgeList.add(edge);
+        }
+    }
+
+    public Set<Edge<T>> getEdgeList() {
+        return edgeList;
     }
 
     public int getVertexCount() {
@@ -92,7 +101,7 @@ public class Graph<T> {
         g.printGraph();
     }
 
-    public class Edge<T> {
+    public static class Edge<T> {
         T vertex1;
         T vertex2;
         int weight;

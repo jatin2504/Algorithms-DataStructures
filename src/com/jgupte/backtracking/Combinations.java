@@ -1,9 +1,6 @@
 package com.jgupte.backtracking;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Combinations {
     List<List<Integer>> combinations = new ArrayList<>();
@@ -56,5 +53,13 @@ public class Combinations {
     public static void main(String[] args) {
         Combinations combinations = new Combinations();
         combinations.getCombinations(new int[]{1, 2, 3});
+        PriorityQueue<Integer> q = new PriorityQueue<>((o1, o2) -> o1 - o2);
+        q.offer(3);
+        q.add(6);
+        q.add(2);
+        q.add(7);
+        q.offer(5);
+
+        System.out.println(q.peek());
     }
 }

@@ -10,6 +10,7 @@ import java.util.Set;
 
 public class Graph<T> {
     public HashMap<T, LinkedList<T>> gMap = new HashMap<>();
+    public T source;
 
     // This function adds a new vertex to the graph
     public void addVertex(T s) {
@@ -17,6 +18,10 @@ public class Graph<T> {
     }
 
     public void addEdge(T src, T dest, boolean biDir) {
+        if (this.source == null) {
+            this.source = src;
+        }
+
         if (!gMap.containsKey(src))
             addVertex(src);
 
